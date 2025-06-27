@@ -1,0 +1,11 @@
+*~
+
+packages
+.paket/
+paket.lock
+paket-files/
+
+bin/
+obj/
+
+.fake

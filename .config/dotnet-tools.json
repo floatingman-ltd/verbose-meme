@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "isRoot": true,
+  "tools": {
+    "fantomas": {
+      "version": "7.0.2",
+      "commands": [
+        "fantomas"
+      ],
+      "rollForward": false
+    },
+    "paket": {
+      "version": "9.0.2",
+      "commands": [
+        "paket"
+      ],
+      "rollForward": false
+    },
+    "fsautocomplete": {
+      "version": "0.78.3",
+      "commands": [
+        "fsautocomplete"
+      ],
+      "rollForward": false
+    }
+  }
+}
