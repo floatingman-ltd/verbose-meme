@@ -1,6 +1,6 @@
 # verbose-meme
 
-A collection of F3 script files I used while learning F#.
+A collection of F# script files I used while learning F#.
 
 ## Sources
 
