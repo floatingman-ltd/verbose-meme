@@ -23,4 +23,4 @@ This is a reasonably good place to start, looking at my bookshelf and browser hi
 
 ### I May have missed
 
-_The code comes from a variety of sources and I have not attributed individual code blocks or files.  If you see code here that you feel shouldn't be here or shouldn't be here without proper attribution please open an issue adding as much insight as you can and I will address the issue._
+_The code comes from a variety of sources and I have not attributed individual code blocks or files.  If you see code here that you feel shouldn't be here or shouldn't be here without proper attribution please open an issue adding as much insight as you can and I will attempt to mitigate the issue._
