@@ -1,3 +1,17 @@
 {
-  "editor.tabSize": 2
+  "editor.tabSize": 2,
+  "editor.rulers": [
+    {
+      "column": 80,
+      "color": "#7DDA58"
+    },
+    {
+      "column": 100,
+      "color": "#FFDE59"
+    },
+    {
+      "column": 120,
+      "color": "#E4080A"
+    }
+  ]
 }
