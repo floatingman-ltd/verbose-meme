@@ -47,3 +47,9 @@ let lf_float = 0x1lf
 // decimal : M or m
 let m_decimal = 12m
 let M_decimal = 12M
+
+open System.Numerics
+
+//allows us to define arbitrarily large values, limited by memory or some absurd 128mb array of bytes
+let BFI = bigint System.Int64.MaxValue * bigint System.Int64.MaxValue
+printfn "bigint: %A * %A = %A" System.Int64.MaxValue System.Int64.MaxValue BFI
