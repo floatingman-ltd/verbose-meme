@@ -6,29 +6,25 @@
 
 //* brute force
 
-let isEven v = v % 2 = 0
+// tail recursion
+[<TailCall>]
+let tail_fibonacci n =
+  let rec loop acc1 acc2 n =
+    match n with
+    | 0L -> acc1
+    | 1L -> acc2
+    | _ -> loop acc2 (acc1 + acc2) (n - 1L)
 
-let nextFibonacci a b = a + b
+  loop 0L 1L n
 
-let fibonacci =
-  (0, 1)
-  |> Seq.unfold (fun state -> 
-    let current, next = state
-    match current with
-    | c when c < 0 -> failwith "Overflow has wrapped to zero"
-    | c when next >= 4_000_000 -> None
-    | _ -> 
-      let next' = current + next
-      let state' = next, next'
-      Some (current, state'))
+let isEven v = v % 2L = 0L
 
-let bruteForceAnswer = fibonacci |> Seq.filter (isEven) // |> Seq.sum
-    // if current < 0 then 
-    //   None
-    // else
-    //   let next' = current + next
-    //   let state' = next, next'
-    //   Some (current, state'))
+#time on
+let brute_fib =
+  Seq.initInfinite (fun i -> tail_fibonacci i)
+  |> Seq.takeWhile (fun v -> v <= 4_000_000L)
+  |> Seq.filter (fun v -> isEven v)
+  |> Seq.sum
+#time off
 
-// for x in  fibonacci do printf "%d " x
-bruteForceAnswer |> Seq.iter (printfn "%A")
+printfn "Brute force: %i" brute_fib
