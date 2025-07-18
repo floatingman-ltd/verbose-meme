@@ -67,29 +67,43 @@ let memoize f =
 let floor n = int (Math.Floor (float n / Phi'))
 let ceiling n = int (Math.Ceiling (float n / Phi'))
 
-[| 0,1; 1,1; 1,2; 2,3; 3,5; 5,8; 8,13; 13,21; 21,34 |]
+[| 0, 1; 1, 1; 1, 2; 2, 3; 3, 5; 5, 8; 8, 13; 13, 21; 21, 34 |]
 // |> Seq.map following_fibonacci
-|> Seq.iter (fun (v,v') -> printfn "% 3i : % 3i : % 3i : % 3i" v v' (floor v) (ceiling v))
+|> Seq.iter (fun (v, v') -> printfn "% 3i : % 3i : % 3i : % 3i" v v' (floor v) (ceiling v))
 
 let following_EvenFibonacci n = int (Math.Floor (float n * Phi''))
 
 let memo_fibonacci n = memoize floor n
 
-#time on
 
 let phi_fib =
   2
   // |> Seq.unfold (fun i -> if i > 4_000_000 then None else Some (i, following_EvenFibonacci i))
-  |> Seq.unfold (fun i ->
-    if i > 4_000_000 then
-      None
-    else
-      Some (i, floor i)
-  )
+  |> Seq.unfold (fun i -> if i > 4_000_000 then None else Some (i, floor i))
   // |> Seq.filter (fun v -> isEven v)
   |> Seq.iter (fun v -> printfn "%i " v)
 // |> Seq.sum
 
+
+#time on
+
+let unfold =
+  (0, 1)
+  |> Seq.unfold (fun (last, current) ->
+
+    if (current > 4_000_000) then
+      None
+    else
+      let next = last + current
+      let state = current, next
+      Some (current, state)
+  )
+  |> Seq.filter (fun v -> isEven v)
+
+unfold
+  |> Seq.iter (printfn "% 8i")
+  // |> Seq.sum
 #time off
 
-// printfn "Golden Ratio: %i" phi_fib
+printfn "Unfolding: %i" (unfold |> Seq.sum)
+
