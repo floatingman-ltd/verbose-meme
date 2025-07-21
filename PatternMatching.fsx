@@ -52,6 +52,16 @@ let matchingList lst =
 
 [| l1; l2; l3; l4; l5 |] |> Array.iter matchingList
 
+// weird list creation
+let weird n = 
+  let rec recursive lst =
+    match lst with
+    | [] -> []
+    | head :: tail -> head :: recursive [ for x in tail do yield x ]
+  [2] @ [3 ..2..n] |> recursive
+
+weird 100
+
 // tuple decomposition
 let MinMax v = v |> Seq.min, v |> Seq.max
 let values = [| -1; 45; 0; 3; 10; 0 |]
