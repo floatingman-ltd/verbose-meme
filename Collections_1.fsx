@@ -32,7 +32,8 @@ let bList = [ 1..10 ]
 let floats = aList[1..2]
 // list decomposition with `::`
 let head :: tail = aList
-// list composition with `::`
+
+// list de-composition with `::`
 let cList = 0 :: bList
 // list concatenation
 let dList = aList @ [ 11; 12 ]
