@@ -36,5 +36,5 @@ let primesTo n =
 
   [ 2 ] @ [3 .. 2..n ] |> sieve
 #time on
-primesTo 1_000
+primesTo 100
 #time off
