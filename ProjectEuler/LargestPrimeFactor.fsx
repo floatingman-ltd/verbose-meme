@@ -1,6 +1,5 @@
 // What is the largest prime factor of 600_851_475_143?
 
-
 open System
 open System.Linq
 open System.Collections.Generic
@@ -13,9 +12,7 @@ let largestPossibleFactor (n : int64) = largestPossibleInt (float n)
 
 // get all the primes less then `largestPossibleInt`
 
-
 // trial division
-
 let primesToByTrial n =
   // memoization
   let primes = new List<_> ()
@@ -30,7 +27,6 @@ let primesToByTrial n =
     | n' when n' = primes.Last () -> true
     | _ ->
       let mutable i = 0
-
       while i < primes.Count && upperLimit >= primes[i] && isPrimeCandidate do
         if n' % primes[i] = 0 then
           isPrimeCandidate <- false
@@ -40,10 +36,10 @@ let primesToByTrial n =
       if isPrimeCandidate then
         primes.Add n' |> ignore
 
+      // printfn "%i is prime (%A)" n' isPrimeCandidate
       isPrimeCandidate
 
-  // isPrime n
-
+  isPrime n
 
 //     if memo.ContainsKey x then
 
@@ -77,11 +73,13 @@ let primesToByTrial n =
 let sqrt = largestPossibleFactor testInt
 
 let p =
-  [ 2L ] @ [ 3L .. 2L .. sqrt ]
-  |> Seq.filter (fun i -> primesToByTrial i)
-  |> Seq.filter (fun p -> testInt % int64 p = 0)
-  |> Seq.max
+  // [ 2L ] @ [ 3L .. 2L .. sqrt ]
+  [ 2L .. 20 ]
+  |> List.filter (fun i -> primesToByTrial i)
+  // |> Seq.filter (fun p -> testInt % int64 p = 0)
+  // |> Seq.max
 // // 6857
+p |> Seq.iter (printf "%A ")
 
 // let p = [ 3..2..sqrt ] |> Seq.filter (fun i -> primes |> isPrime i)
 

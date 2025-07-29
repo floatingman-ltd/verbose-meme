@@ -2,7 +2,7 @@ open System.Collections.Generic
 // recursion is a function that calls itself
 // they must be explicitly identified with the `rec` keyword
 
-// the following will not compile because the keyword is missing
+// the following will not compile because the `rec` keyword is missing
 // let bad_fibonacci n =
 //   match n with
 //   | 0
@@ -108,3 +108,13 @@ memoized_tail_fibonacci fibCount |> printfn "Memoized recursive: %A"
 printf "Second call:"
 memoized_tail_fibonacci fibCount |> printfn "Memoized recursive: %A"
 #time off
+
+
+// mutually recursive functions
+// the `and` keyword is used to tie them together
+open System
+let rec Even x = if x = 0 then true else Odd(Math.Abs x - 1)
+and Odd x = if x = 0 then false else Even (Math.Abs x - 1)
+
+[-2; -1; 0; 1; 2] |> Seq.iter (fun v -> printfn "%i is %s." v (if Even v then "even" else "odd"))
+[-12; -11; 0; 11; 12] |> Seq.iter (fun v -> printfn "% 3i is %s." v (if Odd v then "odd" else "even"))

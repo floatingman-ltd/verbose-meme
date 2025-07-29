@@ -2,42 +2,6 @@
 
 //! collection delimiters are `;` if `,` is used it may result in a collection of a single tuple
 
-// Arrays are declared between `[|` and `|].
-// Arrays must be a single type.
-// Array items are delimited with `;` or new lines.
-// The explicit declaration for the following array is `: string[]`
-let anArray = [| "item1"; "item2" |]
-// indexes
-// note the `.` between the array and the index
-//                         v
-let item1 = anArray.[0]
-// the newer syntax allows for the `.` to be omitted
-let item_x = anArray[1]
-// slicing
-let items = anArray[0..1]
-// mutating, wait. what? yup by default, however the _items_ array declared just above is
-// not affected, because the slice operator returns a new array.  On the other hand simply
-// assignment to a new variable copies the reference.
-let changed = anArray
-anArray.[1] <- "mutated item"
-changed
-
-// Lists are declared between `[` and `]`
-// Lists must be a single type.
-// Lists items are delimited with `;` or new lines.
-let aList = [ 1; 2; 3 ]
-// range
-let bList = [ 1..10 ]
-// slicing
-let floats = aList[1..2]
-// list decomposition with `::`
-let head :: tail = aList
-
-// list de-composition with `::`
-let cList = 0 :: bList
-// list concatenation
-let dList = aList @ [ 11; 12 ]
-
 // Sequences are lazy evaluated
 // Sequences are declared between `seq {` and `}`
 // Sequences must be a single type.

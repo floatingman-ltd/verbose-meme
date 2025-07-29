@@ -1,0 +1,42 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"name":"csharp"},{"name":"fsharp","languageName":"fsharp"},{"name":"html","languageName":"HTML"},{"name":"http","languageName":"HTTP"},{"name":"javascript","languageName":"JavaScript","aliases":["js"]},{"name":"mermaid","languageName":"Mermaid"},{"name":"pwsh","languageName":"PowerShell","aliases":["powershell"]},{"name":"value"}]}}
+
+#!markdown
+
+# Lists and such
+
+List and collections in F# are special and fundamental data structures. There are five _native_ collection types in F#, _array_, _list_, _sequence_, _map_ and _set_.  The distinction in types is effectively the internal structure of the type.
+
+#!markdown
+
+### Decomposition of lists
+
+#!fsharp
+
+let rec headAndTail l = 
+  match l with
+  | [] -> 
+    printfn "all done"
+    []
+  | head::tail ->
+    printfn "head | %A" head
+    printfn "tail | %A" tail
+    headAndTail tail
+
+[2;3;6;9] |> headAndTail
+
+#!markdown
+
+### Composition of lists
+
+#!fsharp
+
+let compose i l =
+  i::l
+
+[] |>
+compose 1 |> printfn "%A" 
+
+[ 1 ] |>
+compose 2 |> printfn "%A" 
